@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://mern-qfyq.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -33,14 +33,17 @@ export const studentAPI = {
 // Faculty endpoints
 export const facultyAPI = {
   getPendingApplications: () => api.get('/faculty/applications'),
-  reviewApplication: (applicationId, action, message = '') => api.put(`/faculty/${applicationId}/review`, { action, message }),
+  reviewApplication: (applicationId, action, message = '') =>
+    api.put(`/faculty/${applicationId}/review`, { action, message }),
 };
 
 // HOD endpoints
 export const hodAPI = {
   getAllApplications: () => api.get('/hod/applications'),
-  finalDecision: (applicationId, decisionData) => api.put(`/hod/${applicationId}/decision`, decisionData),
-  deleteStudent: (studentId) => api.delete(`/student/${studentId}`),
+  finalDecision: (applicationId, decisionData) =>
+    api.put(`/hod/${applicationId}/decision`, decisionData),
+  deleteStudent: (studentId) =>
+    api.delete(`/student/${studentId}`),
 };
 
 export default api;
